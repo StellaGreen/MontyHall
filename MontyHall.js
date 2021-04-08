@@ -39,10 +39,9 @@ while(onPlay === true){
     const yesOrNo = ['1', '2']
         gates[0] = yesOrNo[0]
         gates[1] = yesOrNo[1]
-
+    //on demande a la personne si elle veux changer de porte --------------------------------------
     let lastChoice = Number(readlineSyn.keyIn(yesOrNo, `Would you like change you'r door ? (Yes 1, No 2)`))
         lastChoice = secondChoice
-    //on demande a la personne si elle veux changer de porte --------------------------------------
     if(lastChoice === 2){
     if(question === justTheCar){
         console.log(`You have win ${justTheCar} !`)
