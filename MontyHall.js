@@ -3,7 +3,6 @@ const readlineSyn = require('readline-sync')
 let onPlay = true
 //TODO : presentation du jeux, regles
 
-while(onPlay === true){
     let gates = ['une chevre', 'une chevre', 'une chevre']
     let n = gates[randomInt(0, 3)] // choose of player de gates
     let carIndex = gates.indexOf(n)
@@ -37,27 +36,29 @@ while(onPlay === true){
         gates.splice(n, 0, lastArray) //rajoute la voiture
 
     const yesOrNo = ['1', '2']
-        gates[0] = yesOrNo[0]
-        gates[1] = yesOrNo[1]
     //on demande a la personne si elle veux changer de porte --------------------------------------
-    let lastChoice = Number(readlineSyn.keyIn(yesOrNo, `Would you like change you'r door ? (Yes 1, No 2)`))
-        lastChoice = secondChoice
+    let lastChoice = Number(readlineSyn.keyInSelect(yesOrNo, `Voulez-Vous changer de porte ? ( Oui : 1 / Non : 2 s)`))
+
     if(lastChoice === 2){
-    if(question === justTheCar){
-        console.log(`You have win ${justTheCar} !`)
-    } else {
+        console.log(`Vous avez changez de porte`)
+        let changement = question + 1
+            if(changement === carIndex){
+                console.log(`You have win ${lastArray} !`)
+            } else {
+                console.log(`Sorry this is the goat ... I hope you like this milk !`)
+            }
+    }
+    if(lastChoice === 1){
+        console.log(`Vous gardez la même porte qu'au début`)
+        let final = question
+        if(final === carIndex){
+            console.log(`You have win ${justTheCar} !`)
+        } else {
         console.log(`Sorry this is the goat ... I hope you like this milk !`)
+        }
     }
+    if(question === 0 || lastChoice === 0){
+        console.log(`Vous avez souhaitez quitter le jeu`)
+        process.exit(1)
     }
-if(lastChoice === 1){
-    let changement = indexOf(gates) - 1
-    if(changement === justTheCar){
-        console.log(`You have win ${justTheCar} !`)
-    } else {
-        console.log(`Sorry this is the goat ... I hope you like this milk !`)
-    }
-
-}
-}
-
-MontyHall()
+    
